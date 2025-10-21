@@ -43,9 +43,9 @@ main {
     max-width: 1600px;
     margin: 0 auto;
     padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
 
 .section-box {
@@ -151,13 +151,15 @@ footer {
         padding: 12px 30px;
         font-size: 16px;
     }
+    main {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (min-width: 601px) and (max-width: 899px) {
     main {
-        flex-direction: column;
-        align-items: center;
-        width: 95%;
+        grid-template-columns: 1fr;
+
     }
 
     .intro,
