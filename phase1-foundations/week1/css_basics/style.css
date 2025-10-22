@@ -22,15 +22,52 @@ header {
 
 header img {
     width: 120px;
-    height: 100px;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     border: 6px solid #2c3e50;
     transition: transform 0.3s;
     object-fit: cover;
+    height: auto;
+    cursor: pointer;
 }
 
 header img:hover {
     transform: scale(1.05);
+}
+
+.img-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    gap: 20px;
+}
+.img-overlay__img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    border: 6px solid #2c3e50;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+.img-overlay__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.img-overlay__close:hover {
+    background-color: #217dbb;
 }
 
 header h1 {
@@ -45,7 +82,8 @@ main {
     padding: 30px 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 50px;
+    transition: all 0.3s ease   ;
 }
 
 .section-box {
@@ -89,6 +127,10 @@ figure img:hover {
     transform: scale(1.03);
 }
 
+.project-img {
+    cursor: pointer;
+}
+
 .projects button {
     display: block;
     margin: 35px auto 10px;
@@ -100,7 +142,6 @@ figure img:hover {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s;
-    text-decoration: none;
 }
 
 .projects button:hover {
@@ -144,7 +185,7 @@ footer {
     }
 
     figure {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
     .projects button {
@@ -174,11 +215,9 @@ footer {
 
 @media (min-width: 900px) and (max-width: 1199px) {
     main {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
-        flex-wrap: wrap;
     }
 
     .intro,
@@ -195,16 +234,14 @@ footer {
 
 @media (min-width: 1200px) {
     main {
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
         width: 85%;
     }
 
     .intro,
     .projects {
-        flex: 1;
         min-width: 400px;
         max-width: 700px;
     }
