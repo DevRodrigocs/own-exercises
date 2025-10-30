@@ -1,17 +1,37 @@
-const seeAllButton = document.getElementById('see-all');
+const seeAllButton = document.querySelector('#see-all button');
 seeAllButton.addEventListener('click', () => {
     alert('Check out my projects on Github!');
+
+    const currentColor = seeAllButton.style.backgroundColor || '#3498db';
+    seeAllButton.style.backgroundColor = currentColor === 'rgb(231, 76, 60)' ? '#3498db' : '#e74c3c';
+
+    const message = document.createElement('p');
+    message.textContent = 'Button color changed!';
+    message.className = 'temp-message';
+    message.setAttribute('aria-live', 'polite');
+    document.querySelector('.projects').appendChild(message);
+
+    setTimeout(() => {
+        message.remove();
+    }, 3000);
 });
+
+const projectImages = document.querySelectorAll('.project-img');
+projectImages.forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => openImageOverlay(img.src, img.alt));
+});
+
 
 const openImageOverlay = (src, alt = '') => {
 
-    const existingOverlay = document.querySelector('img-overlay');
-    if(existingOverlay) existingOverlay.remove();
+    const existingOverlay = document.querySelector('.img-overlay');
+    if (existingOverlay) existingOverlay.remove();
 
     const overlay = document.createElement('div');
     overlay.className = 'img-overlay';
     overlay.tabIndex = 0;
-    overlay.setAttribute('aria-label', 'Image preview overlay, press Espace or click to close');
+    overlay.setAttribute('aria-label', 'Image preview overlay, press Escape or click to close');
 
     const img = document.createElement('img');
     img.className = 'img-overlay__img';
@@ -46,12 +66,6 @@ const openImageOverlay = (src, alt = '') => {
     document.body.style.overflow = 'hidden';
     overlay.focus();
 }
-
-const projectImages = document.querySelectorAll('.project-img');
-projectImages.forEach(img => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => openImageOverlay(img.src, img.alt));
-});
 
 const header = document.querySelector('header');
 header.addEventListener('click', (e) => {

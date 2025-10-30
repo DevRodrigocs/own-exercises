@@ -173,6 +173,22 @@ footer {
     color: #217dbb;
 }
 
+.temp-message {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 16px;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 
 @media (max-width: 600px) {
     .header-content {
