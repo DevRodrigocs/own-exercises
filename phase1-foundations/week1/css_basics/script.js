@@ -1,9 +1,9 @@
-const seeAllButton = document.querySelector('#see-all button');
-seeAllButton.addEventListener('click', () => {
+const seeAllBtn = document.querySelector('#see-all button');
+seeAllBtn.addEventListener('click', () => {
     alert('Check out my projects on Github!');
 
-    const currentColor = seeAllButton.style.backgroundColor || '#3498db';
-    seeAllButton.style.backgroundColor = currentColor === 'rgb(231, 76, 60)' ? '#3498db' : '#e74c3c';
+    const currentColor = seeAllBtn.style.backgroundColor || '#3498db';
+    seeAllBtn.style.backgroundColor = currentColor === 'rgb(231, 76, 60)' ? '#3498db' : '#e74c3c';
 
     const message = document.createElement('p');
     message.textContent = 'Button color changed!';
@@ -15,6 +15,50 @@ seeAllButton.addEventListener('click', () => {
         message.remove();
     }, 3000);
 });
+
+document.querySelector('header').addEventListener('click', (e) => {
+    if(e.target.closest('img')) return;
+    const header = e.currentTarget;
+    header.style.backgroundColor = 
+        header.style.backgroundColor === 'rgb(44, 62, 80)' ? '#1a252f' : '#2c3e50';
+});
+
+let clickCount = 0;
+document.querySelectorAll('.project-img').forEach(img => {
+    img.addEventListener('click', () => {
+        clickCount++;
+        const counter = document.getElementById('click-counter') || createCounter();
+        counter.textContent = `Images clicked: ${clickCount}`;
+        openImageOverlay(img.src, img.alt);
+    });
+});
+
+function createCounter() {
+    const p = document.createElement('p');
+    p.id = 'click-counter';
+    p.style.textAlign = 'center';
+    p.style.margin = '10px';
+    p.style.fontWeight = 'bold';
+    document.querySelector('.projects').appendChild(p);
+    return p;
+}
+
+const contactForm = document.getElementById('contact-form');
+if(contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = e.target.name.value.trim();
+        if(name) {
+            alert(`Thank you, ${name}! Message sent.`);
+            e.target.reset();
+        } else {
+            alert('Please fill in your name!');
+        }
+    });
+}
+
+
+
 
 const projectImages = document.querySelectorAll('.project-img');
 projectImages.forEach(img => {
