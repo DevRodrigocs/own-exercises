@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Projects - Live API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Latest GitHub Projects</h1>
+        <p class="subtitle">Loaded in real time using the GitHub API</p>
+
+        <div class="controls">
+            <input type="text" id="username" placeholder="GitHub" value="Devrodrigocs">
+            <button id="load">Load Projects</button>
+        </div>
+
+        <div id="loading">Loading Projects...</div>
+        <div id="error" class="error"></div>
+
+        <div class="grid" id="projects"></div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
